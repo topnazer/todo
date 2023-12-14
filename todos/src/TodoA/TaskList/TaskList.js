@@ -4,7 +4,6 @@ import './TaskList.css';
 import { FaTrash } from 'react-icons/fa';
 
 export default function TaskList({ tasks, handleUpdate, handleDelete }) {
-  
   return (
     <div className="tlist">
       {tasks.map((task) => (
@@ -18,7 +17,6 @@ export default function TaskList({ tasks, handleUpdate, handleDelete }) {
     </div>
   );
 }
-
 
 function Task({ task, handleUpdate, handleDelete }) {
   const [currentTask, setTask] = useState(task);
@@ -39,16 +37,6 @@ function Task({ task, handleUpdate, handleDelete }) {
             setTask({ ...currentTask, done: !currentTask.done });
           }}
         />
-      </div>
-      <div className="task-cat">
-        <div className={`cat ${task.category}`}>
-          <p>{task.category}</p>
-        </div>
-        {task.is_important && (
-          <div className="cat important">
-            <p>important</p>
-          </div>
-        )}
       </div>
     </div>
   );
