@@ -16,7 +16,7 @@
 
 .auth .intro {
   background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.473)),
-    url('../../../public/todobackground.jpg') no-repeat center center / cover;
+    url('../../../public/todobackground.png') no-repeat center center / cover;
   color: white !important;
 }
 .auth .intro h1 {
@@ -52,7 +52,7 @@
 
   .auth .form {
     background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.473)),
-      url('../../../public/todobackground1.jpg') no-repeat center center / cover;
+      url('../../../public/todobackground1.png') no-repeat center center / cover;
     color: white !important;
   }
 }
