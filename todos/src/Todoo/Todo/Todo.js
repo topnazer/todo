@@ -1,23 +1,23 @@
-import './Todo.css';
+import "./Todo.css";
 
-import { Navbar, TaskForm, TaskList, Satistics } from '../../TodoA';
-import { useState, useEffect } from 'react';
+import { Navbar, TaskForm, TaskList, Satistics, Footer } from "../../TodoA";
+import { useState, useEffect } from "react";
 import {
   onTasksSnapshot,
   createTask,
   updateTask,
   deleteTask,
-} from '../../firebase';
+} from "../../firebase";
 
 export default function Todo({ user, logout }) {
   const [tasks, setTasks] = useState([]);
-  const handleAdd = (newTask, category) => {
-    createTask(user.uid, newTask, category);
+  const handleAdd = (newTask, category, priority) => {
+    createTask(user.uid, newTask, category, priority);
   };
   const handleUpdate = (taskid, taskupdate) => {
     updateTask(user.uid, taskid, taskupdate);
   };
-  const handleDelete  = (taskid) => {
+  const handleDelete = (taskid) => {
     deleteTask(user.uid, taskid);
   };
   useEffect(() => {
@@ -37,9 +37,10 @@ export default function Todo({ user, logout }) {
         <TaskList
           tasks={tasks}
           handleUpdate={handleUpdate}
-          handleDelete ={handleDelete}
+          handleDelete={handleDelete}
         />
       </div>
+      <Footer/>
     </div>
   );
 }

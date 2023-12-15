@@ -1,9 +1,9 @@
-import "./App.css";
-import Auth from "./Todoo/TodoAuth/Auth";
-import Todo from "./Todoo/Todo/Todo";
+import './App.css';
+import { useEffect, useState } from 'react';
+import { auth } from './firebase';
 
-import { useEffect, useState } from "react";
-import { auth } from "./firebase";
+import Auth from './Todoo/TodoAuth/Auth';
+import Todo from './Todoo/Todo/Todo';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -11,12 +11,14 @@ function App() {
     try {
       await auth.signOut();
     } catch (error) {
-      console.error("Error logging out:", error.message);
+      console.error('Error logging out:', error.message);
     }
   };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+      }
       setUser(user);
     });
     return () => unsubscribe();

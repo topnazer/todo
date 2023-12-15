@@ -1,13 +1,12 @@
-import { useState } from 'react';
-import './TaskForm.css';
+import { useState } from "react";
+import "./TaskForm.css";
 
 export default function TaskForm({ handleAdd }) {
-  const [task, setTask] = useState('');
-  const [category, setCategory] = useState("work");
-
+  const [task, setTask] = useState("");
+  const [category, setCategory] = useState("others");
   const addTask = () => {
-    handleAdd(task);
-    setTask('');
+    handleAdd(task, category, false);
+    setTask("");
   };
   return (
     <div className="tform">
@@ -20,18 +19,21 @@ export default function TaskForm({ handleAdd }) {
         onChange={(e) => setTask(e.target.value)}
         value={task}
       />
-       <label htmlFor="category">Category</label>
-        <select
-          name="category"
-          id="category"
-          onChange={(e) => setCategory(e.target.value)}
-          value={category}
-        >
-          <option value="work">Work</option>
-          <option value="school">School</option>
-          <option value="chores">Chores</option>
-          <option value="others">Others</option>
-        </select>
+      <select
+        name="category"
+        id="category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
+        <option value="work">School</option>
+        <option value="house">House</option>
+        <option value="others">Others</option>
+      </select>
+      <input type="date" name="date" id="date" />
+      <div className="check">
+        <input type="checkbox" name="prio" id="prio" />
+        <label htmlFor="prio">Priority</label>
+      </div>
       <button onClick={addTask}>Add</button>
     </div>
   );
