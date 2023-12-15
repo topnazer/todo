@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./TaskList.css";
-
 import { FaTrash } from "react-icons/fa";
 
 export default function TaskList({ tasks, handleUpdate, handleDelete }) {
@@ -18,16 +17,19 @@ export default function TaskList({ tasks, handleUpdate, handleDelete }) {
   );
 }
 
-function Task({ task, handleUpdate, handleDelete, }) {
+function Task({ task, handleUpdate, handleDelete }) {
   const [currentTask, setTask] = useState(task);
+  
   useEffect(() => {
     handleUpdate(currentTask.id, currentTask);
-  }, [currentTask,handleUpdate]);
+  }, [currentTask, handleUpdate]);
+
   return (
     <div className={currentTask.done ? "t done" : "t undone"}>
       <p>{currentTask.text}</p>
+
+      <p>{currentTask.category}</p>
       <div className="t-actions">
-        <p>{currentTask.category}</p>
         <FaTrash size={18} onClick={() => handleDelete(currentTask.id)} />
         <input
           type="checkbox"
